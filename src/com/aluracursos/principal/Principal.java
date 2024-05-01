@@ -1,6 +1,8 @@
 package com.aluracursos.principal;
 
 import com.aluracursos.modelos.ConsultaMoneda;
+import com.aluracursos.modelos.Moneda;
+import com.aluracursos.modelos.MonedasAPI;
 
 import java.util.Scanner;
 
@@ -9,6 +11,11 @@ public class Principal {
         int opcion = 0;
         Scanner teclado = new Scanner(System.in);
         ConsultaMoneda consulta = new ConsultaMoneda();
+        double valoraconvertir = 0.0 ;
+        String currency = "";
+        Moneda moneda;
+        MonedasAPI modenasapi;
+        double valorconvertido = 0.0;
 
 
         System.out.println("**********************************************");
@@ -31,10 +38,24 @@ public class Principal {
             switch(opcion){
                 case 1:
                     System.out.println("Opcion 1");
-                    consulta.consultarAPI("COP");
+                    System.out.println("Ingrese el valor a convertir a USD");
+                    valoraconvertir = teclado.nextDouble();
+                    currency="ARS";
+                    modenasapi = consulta.consultarAPI(currency);
+                    moneda = new Moneda(currency,Double.valueOf(modenasapi.conversion_rates().get(currency)));
+                    System.out.println("Conversion a Dolares "+moneda.ConvertirAUSD(valoraconvertir,modenasapi.conversion_rates().get(currency)));
+                    valorconvertido = moneda.ConvertirAUSD(valoraconvertir,moneda.ConvertirAOTRA( valoraconvertir, modenasapi.conversion_rates().get(currency)));
+                    moneda.messagetousd(valoraconvertir,currency,valorconvertido);
                     break;
                 case 2:
                     System.out.println("Opcion 2");
+                    System.out.println("Ingrese el valor a convertir a USD");
+                    valoraconvertir = teclado.nextDouble();
+                    currency="ARS";
+                    modenasapi = consulta.consultarAPI(currency);
+                    moneda = new Moneda(currency,Double.valueOf(modenasapi.conversion_rates().get(currency)));
+                    valorconvertido = moneda.ConvertirAOTRA( valoraconvertir, moneda.getValor());
+                    moneda.messagetootra(valoraconvertir,currency,valorconvertido);
 
                     break;
                 case 3:
@@ -54,5 +75,6 @@ public class Principal {
                     break;
             }
         }
+
     }
 }

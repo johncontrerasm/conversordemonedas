@@ -9,7 +9,7 @@ import java.net.http.HttpResponse;
 
 public class ConsultaMoneda {
 
-    public void consultarAPI (String currency) {
+    public MonedasAPI consultarAPI (String currency) {
 
         String url = "https://v6.exchangerate-api.com/v6/0af90cd5928ad817c12c709e/latest/USD";
         URI direccion = URI.create(url);
@@ -24,9 +24,8 @@ public class ConsultaMoneda {
         try {
             response = client
                     .send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println("Código de estado: " + response.statusCode());
-            System.out.println(response.body());
- //           return new Gson().fromJson(response.body(),Pelicula.class);
+
+            return new Gson().fromJson(response.body(),MonedasAPI.class);
 
         } catch (Exception e) {
             throw new RuntimeException("No encontre esa Moneda");
