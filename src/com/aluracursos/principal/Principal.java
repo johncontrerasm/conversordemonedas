@@ -55,7 +55,7 @@ public class Principal {
                     modenasapi = consulta.consultarAPI(currency);
                     moneda = new Moneda(currency,Double.valueOf(modenasapi.conversion_rates().get(currency)));
                     System.out.println("Conversion a Dolares "+moneda.ConvertirAUSD(valoraconvertir,modenasapi.conversion_rates().get(currency)));
-                    valorconvertido = moneda.ConvertirAUSD(valoraconvertir,moneda.ConvertirAOTRA( valoraconvertir, modenasapi.conversion_rates().get(currency)));
+                    valorconvertido = moneda.ConvertirAUSD(valoraconvertir,modenasapi.conversion_rates().get(currency));
                     moneda.messagetousd(valoraconvertir,currency,valorconvertido);
 
                     break;
@@ -77,7 +77,7 @@ public class Principal {
                     modenasapi = consulta.consultarAPI(currency);
                     moneda = new Moneda(currency,Double.valueOf(modenasapi.conversion_rates().get(currency)));
                     System.out.println("Conversion a Dolares "+moneda.ConvertirAUSD(valoraconvertir,modenasapi.conversion_rates().get(currency)));
-                    valorconvertido = moneda.ConvertirAUSD(valoraconvertir,moneda.ConvertirAOTRA( valoraconvertir, modenasapi.conversion_rates().get(currency)));
+                    valorconvertido = moneda.ConvertirAUSD(valoraconvertir,modenasapi.conversion_rates().get(currency));
                     moneda.messagetousd(valoraconvertir,currency,valorconvertido);
                     break;
                 case 5:
@@ -98,7 +98,7 @@ public class Principal {
                     modenasapi = consulta.consultarAPI(currency);
                     moneda = new Moneda(currency,Double.valueOf(modenasapi.conversion_rates().get(currency)));
                     System.out.println("Conversion a Dolares "+moneda.ConvertirAUSD(valoraconvertir,modenasapi.conversion_rates().get(currency)));
-                    valorconvertido = moneda.ConvertirAUSD(valoraconvertir,moneda.ConvertirAOTRA( valoraconvertir, modenasapi.conversion_rates().get(currency)));
+                    valorconvertido = moneda.ConvertirAUSD(valoraconvertir,modenasapi.conversion_rates().get(currency));
                     moneda.messagetousd(valoraconvertir,currency,valorconvertido);
                     break;
                 case 7:
